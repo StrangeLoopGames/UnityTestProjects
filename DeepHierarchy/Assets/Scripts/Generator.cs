@@ -87,7 +87,7 @@ public class Generator : MonoBehaviour
 
     private void GenerateNestedWithBaseObjects()
     {
-        int totalObjects = (nestedRootAmount * nestedAmount) + baseAmount;
+        int totalObjects = (nestedWithBaseRootAmount * nestedWithBaseAmount) + baseAmount;
         Debug.Log($"Total objects created: {totalObjects}");
 
         //Create the static base objects
@@ -101,14 +101,14 @@ public class Generator : MonoBehaviour
             root = newObj;
         }
         
-        for(int i = 0; i < nestedRootAmount; i++)
+        for(int i = 0; i < nestedWithBaseRootAmount; i++)
         {
             GameObject rootObject = Instantiate(prefabToSpawn, root.transform);
             rootObject.name = $"{prefabToSpawn.name}{i:000}";
             
             //Create the nested objects
             GameObject previousObject = rootObject;
-            for(int j = 0; j < nestedAmount; j++)
+            for(int j = 0; j < nestedWithBaseAmount; j++)
             {
                 GameObject nestedObject = Instantiate(prefabToSpawn, previousObject.transform);
                 previousObject = nestedObject;
